@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-yellow-300">
-      <div className="bg-white p-8 rounded-lg shadow-md w-96">
+      {/* Set a min-h to ensure the height remains constant */}
+      <div className="bg-white p-8 rounded-lg shadow-md w-96 min-h-[31rem]">
         <div className="flex justify-around mb-4">
           <button
             className={`px-4 py-2 text-lg font-semibold focus:outline-none ${
@@ -24,12 +26,13 @@ const Auth = () => {
             Register
           </button>
         </div>
+
         <motion.div
           key={isLogin ? "login" : "register"}
-          initial={{ opacity: 0, x: isLogin ? 100 : -100 }}
+          initial={{ opacity: 0, x: isLogin ? 50 : -50 }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: isLogin ? -100 : 100 }}
-          transition={{ duration: 0.5 }}
+          exit={{ opacity: 0, x: isLogin ? -50 : 50 }}
+          transition={{ duration: 0.3 }}
         >
           {isLogin ? (
             <form action="" className="space-y-4">
@@ -57,7 +60,6 @@ const Auth = () => {
               </div>
 
               <button className="w-full bg-yellow-500 text-white py-2 rounded-md hover:bg-yellow-600 transition-colors">
-                {" "}
                 Login
               </button>
             </form>
